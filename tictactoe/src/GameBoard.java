@@ -4,6 +4,7 @@ public class GameBoard {
 
     private char[][] spaces;
 
+    // initializes a gameboard size 3x3 with '#' as empty space
     public GameBoard(){
 
         this.spaces = new char[3][3];
@@ -16,6 +17,7 @@ public class GameBoard {
 
     }
 
+    // sets space at desired position with specified value
     public void setSpace(int row, int col, char value){
         this.spaces[row][col] = value;
     }
