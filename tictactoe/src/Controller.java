@@ -17,6 +17,7 @@ public class Controller {
 
     }
 
+    // prints out the current state of gameboard
     public void visualizeGameBoard() {
 
         for (int row = 0; row < 3; row++){
