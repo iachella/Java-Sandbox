@@ -3,6 +3,7 @@ package src;
 public class GameBoard {
 
     private char[][] spaces;
+    private boolean isGameOver;
 
     // initializes a gameboard size 3x3 with '#' as empty space
     public GameBoard(){

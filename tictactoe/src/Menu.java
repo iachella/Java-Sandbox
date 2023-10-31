@@ -18,4 +18,16 @@ public class Menu {
 
     }
 
+    // do
+        // read input from player 1
+        // update and visualize gameBoard
+        // read input from player 2
+        // update and visualize gameBoard
+        // repeat until win or draw
+    // while gameBoard.isGameOver == false
+
+    // checkGameOver
+    // if 3 in row or no more spaces available (draw)
+    // more advanced could detect draw before board is full
+
 }
