@@ -18,6 +18,7 @@ public class Menu {
 
     }
 
+
     // do
         // read input from player 1
         // update and visualize gameBoard

@@ -2,15 +2,28 @@ package src;
 
 public class Controller {
 
+    GameBoard gameBoard = new GameBoard();
+
     public void beginGame(){
 
-        GameBoard gameBoard = new GameBoard();
+
 
     }
 
     public void playGame() {
 
 
+    }
+
+    public void playRound(Player player, int playerInput) {
+        do {
+            //TODO: test whether this works
+            int row = (playerInput / 3) - 1;
+            int col = (playerInput % 3) - 1;
+            //TODO: add attribute heads or tails to player?
+            gameBoard.setSpace(row, col, 't');
+
+        } while (gameBoard.getIsGameOver() == false);
     }
 
     // prints out the current state of gameboard

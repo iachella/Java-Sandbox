@@ -9,6 +9,7 @@ public class GameBoard {
     public GameBoard(){
 
         this.spaces = new char[3][3];
+        this.isGameOver = false;
 
         for (int row = 0; row < 3; row++){
             for (int col = 0; col < 3; col++){
@@ -29,5 +30,13 @@ public class GameBoard {
 
     public void setSpaces(char[][] spaces) {
         this.spaces = spaces;
+    }
+
+    public boolean getIsGameOver() {
+        return isGameOver;
+    }
+
+    public void setIsGameOver(boolean isGameOver) {
+        this.isGameOver = isGameOver;
     }
 }
