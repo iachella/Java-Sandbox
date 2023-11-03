@@ -3,6 +3,7 @@ package src;
 public class Player {
 
     private String name;
+    private char headsOrTails;
     private int wins, losses, draws;
 
     public String getName() {
@@ -11,6 +12,14 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public char getHeadsOrTails() {
+        return headsOrTails;
+    }
+
+    public void setHeadsOrTails(char headsOrTails) {
+        this.headsOrTails = headsOrTails;
     }
 
     public int getWins() {

@@ -6,15 +6,32 @@ public class Menu {
 
     public void mainMenu() {
 
-        //enterPlayerNames();
-        controller.playGame();
+        playerSetupMenu();
+        playRoundMenu();
 
         }
 
-    public void enterPlayerNames() {
+    public void playerSetupMenu() {
 
-        String player1Name = InputClass.readLine("Player 1 name: ");
-        String player2Name = InputClass.readLine("Player 2 name: ");
+        String player1Name = InputClass.readLine("Player 1 name (heads): ");
+        String player2Name = InputClass.readLine("Player 2 name (tails): ");
+        controller.setupPlayers(player1Name, player2Name);
+
+        System.out.println("Great! Let's begin.");
+    }
+
+    public void playRoundMenu() {
+
+        int chosenSpace;
+
+        controller.visualizeGameBoard();
+        chosenSpace = InputClass.readInt(controller.player1.getName() +
+                ", choose a space by entering its number");
+        controller.playRound(controller.player1, chosenSpace);
+        controller.visualizeGameBoard();
+        chosenSpace = InputClass.readInt(controller.player2.getName() +
+                ", choose a space by entering its number");
+        controller.playRound(controller.player2, chosenSpace);
 
     }
 

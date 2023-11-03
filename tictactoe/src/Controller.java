@@ -3,31 +3,40 @@ package src;
 public class Controller {
 
     GameBoard gameBoard = new GameBoard();
+    Player player1 = new Player();
+    Player player2 = new Player();
 
-    public void beginGame(){
+    public void setupPlayers(String player1Name, String player2Name) {
 
-
+        player1.setName(player1Name);
+        player1.setHeadsOrTails('O');
+        player2.setName(player2Name);
+        player1.setHeadsOrTails('X');
 
     }
 
-    public void playGame() {
+    public void playRound(Player player, int chosenSpace) {
 
-
-    }
-
-    public void playRound(Player player, int playerInput) {
-        do {
+        // play round only if game is not over
+        if(gameBoard.getIsGameOver() == false) {
             //TODO: test whether this works
-            int row = (playerInput / 3) - 1;
-            int col = (playerInput % 3) - 1;
-            //TODO: add attribute heads or tails to player?
-            gameBoard.setSpace(row, col, 't');
+            int row = (chosenSpace / 3) - 1;
+            int col = (chosenSpace % 3) - 1;
 
-        } while (gameBoard.getIsGameOver() == false);
+            // sets chosen space with player's character ('O' or 'X')
+            gameBoard.setSpace(row, col, player.getHeadsOrTails());
+        }
+        // TODO: call and create method that checks when game is over
+
     }
 
-    // prints out the current state of gameboard
-    public void visualizeGameBoard(GameBoard gameBoard) {
+    // alternative 1
+    // which player is sent through parameters
+    // alternative 2
+    // since player 1 always plays before player 2, just say it in the code
+
+    // prints out the current state of the gameboard
+    public void visualizeGameBoard() {
 
         for (int row = 0; row < 3; row++){
             for (int col = 0; col < 3; col++){
