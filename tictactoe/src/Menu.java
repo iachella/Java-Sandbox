@@ -27,11 +27,11 @@ public class Menu {
         controller.visualizeGameBoard();
         chosenSpace = InputClass.readInt(controller.player1.getName() +
                 ", choose a space by entering its number");
-        controller.playRound(controller.player1, chosenSpace);
+        controller.playTurn(controller.player1, chosenSpace);
         controller.visualizeGameBoard();
         chosenSpace = InputClass.readInt(controller.player2.getName() +
                 ", choose a space by entering its number");
-        controller.playRound(controller.player2, chosenSpace);
+        controller.playTurn(controller.player2, chosenSpace);
 
     }
 

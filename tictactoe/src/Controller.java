@@ -6,6 +6,7 @@ public class Controller {
     Player player1 = new Player();
     Player player2 = new Player();
 
+    // receives players' names and sets them to the player objects
     public void setupPlayers(String player1Name, String player2Name) {
 
         player1.setName(player1Name);
@@ -15,7 +16,8 @@ public class Controller {
 
     }
 
-    public void playRound(Player player, int chosenSpace) {
+    // performs one turn of tictactoe
+    public void playTurn(Player player, int chosenSpace) {
 
         // play round only if game is not over
         if(gameBoard.getIsGameOver() == false) {
