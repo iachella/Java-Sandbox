@@ -1,5 +1,7 @@
 package src;
 
+import java.util.Arrays;
+
 public class Controller {
 
     GameBoard gameBoard = new GameBoard();
@@ -28,19 +30,24 @@ public class Controller {
             // sets chosen space with player's character ('O' or 'X')
             gameBoard.setSpace(row, col, player.getHeadsOrTails());
         }
-        // TODO: call and create method that checks when game is over
+        checkGameOver();
 
     }
 
     /** checks if one of the players has won the game
-     * returns 0 if game is not over, 1 if player1 win, 2 if player2 win */
+     * return values:
+     * 1 if player1 wins
+     * 2 if player2 wins
+     * 3 if game ends with draw
+     * 4 if game continues */
     public int checkGameOver() {
+
 
         char[][] spaces = gameBoard.getSpaces();
         char p1 = player1.getHeadsOrTails();
         char p2 = player2.getHeadsOrTails();
 
-        // A: check all possible combinations
+        // Scenario 1: Player 1 wins - check all possible combinations
         if (
             // horizontal checks
             spaces[0][0] == p1 && spaces[0][1] == p1 && spaces[0][2] == p1
@@ -54,9 +61,12 @@ public class Controller {
         ||  spaces[0][0] == p1 && spaces[1][1] == p1 && spaces[2][2] == p1
         ||  spaces[0][2] == p1 && spaces[1][1] == p1 && spaces[2][0] == p1)
         {
+            // player 1 wins
+            gameBoard.setIsGameOver(true);
             return 1;
         }
 
+        // Scenario 2: Player 2 wins - check all possible combinations
         if (
             // horizontal checks
             spaces[0][0] == p2 && spaces[0][1] == p2 && spaces[0][2] == p2
@@ -70,16 +80,33 @@ public class Controller {
         ||  spaces[0][0] == p2 && spaces[1][1] == p2 && spaces[2][2] == p2
         ||  spaces[0][2] == p2 && spaces[1][1] == p2 && spaces[2][0] == p2)
         {
+            // player 2 wins
+            gameBoard.setIsGameOver(true);
             return 2;
         }
 
-        return 0;
-    }
+        // Scenario 3: Game ends with a draw
+        // initialize isDraw as true and set it false as long as there are playable spaces
+        boolean isDraw = true;
+        // iterate through spaces
+        for (int row = 0; row < 3; row++){
+            for (int col = 0; col < 3; col++){
+                // if space is still playable (contains '#') game can continue
+                if (spaces[row][col] == '#'){
+                    isDraw = false;
+                }
+            }
+        }
 
-    // alternative 1
-    // which player is sent through parameters
-    // alternative 2
-    // since player 1 always plays before player 2, just say it in the code
+        if (isDraw) {
+            // game is a draw
+            gameBoard.setIsGameOver(true);
+            return 3;
+        } else {
+            // game is not over
+            return 4;
+        }
+    }
 
     /** prints out the current state of the gameboard */
     public void visualizeGameBoard() {
