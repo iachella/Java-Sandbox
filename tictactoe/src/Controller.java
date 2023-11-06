@@ -22,6 +22,8 @@ public class Controller {
         // play round only if game is not over
         if(gameBoard.getIsGameOver() == false) {
             //TODO: test whether this works
+            // TODO: game exits with draw on first round
+            // TODO: fix smelly code
             int row = (chosenSpace / 3) - 1;
             int col = (chosenSpace % 3) - 1;
 
