@@ -5,7 +5,7 @@ public class GameBoard {
     private char[][] spaces;
     private boolean isGameOver;
 
-    // initializes a gameboard size 3x3 with '#' as empty space
+    /** initializes a gameboard size 3x3 with '#' as empty space */
     public GameBoard(){
 
         this.spaces = new char[3][3];
