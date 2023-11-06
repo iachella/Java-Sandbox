@@ -1,7 +1,5 @@
 package src;
 
-import java.util.Arrays;
-
 public class Controller {
 
     GameBoard gameBoard = new GameBoard();
@@ -27,11 +25,13 @@ public class Controller {
             int row = (chosenSpace / 3) - 1;
             int col = (chosenSpace % 3) - 1;
 
-            // sets chosen space with player's character ('O' or 'X')
-            gameBoard.setSpace(row, col, player.getHeadsOrTails());
-        }
-        checkGameOver();
+            // set space only if still available
+            if (gameBoard.getSpaces()[row][col] != '#'){
+                // sets chosen space with player's character ('O' or 'X')
+                gameBoard.setSpace(row, col, player.getHeadsOrTails());
+            }
 
+        }
     }
 
     /** checks if one of the players has won the game
