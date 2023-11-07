@@ -21,11 +21,19 @@ public class Controller {
 
         // play round only if game is not over
         if(gameBoard.getIsGameOver() == false) {
-            //TODO: test whether this works
+            // TODO: test whether this works
             // TODO: game exits with draw on first round
             // TODO: fix smelly code
             int row = (chosenSpace / 3) - 1;
             int col = (chosenSpace % 3) - 1;
+
+            // ---------- TEST NOTES -----------
+            /**example: 1
+                    row = 1/3 -1 = 0 right
+                    col = 1%3 -1 =
+                    problem with example: 3
+                    row = 2/3 -1 = 0 right*/
+
 
             // set space only if still available
             if (gameBoard.getSpaces()[row][col] != '#'){
