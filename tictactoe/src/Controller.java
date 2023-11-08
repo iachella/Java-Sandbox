@@ -20,29 +20,26 @@ public class Controller {
     public void playTurn(Player player, int chosenSpace) {
 
         int row = -1, col = -1;
-        // play round only if game is not over
-        if(gameBoard.getIsGameOver() == false) {
-            // TODO: test whether this works
-            // TODO: game exits with draw on first round
-            // TODO: fix smelly code
-            switch (chosenSpace){
-                case 1,2,3: row = 0;
-                case 4,5,6: row = 1;
-                case 7,8,9: row = 2;
-            }
-            switch (chosenSpace){
-                case 1,4,7: col = 0;
-                case 2,5,8: col = 1;
-                case 3,6,9: col = 2;
-            }
 
-            // set space only if still available
-            if (gameBoard.getSpaces()[row][col] == '#'){
-                // sets chosen space with player's character ('O' or 'X')
-                gameBoard.setSpace(row, col, player.getHeadsOrTails());
-            }
-
+        switch (chosenSpace){
+            case 1,2,3: row = 0; break;
+            case 4,5,6: row = 1; break;
+            case 7,8,9: row = 2; break;
         }
+        switch (chosenSpace){
+            case 1,4,7: col = 0; break;
+            case 2,5,8: col = 1; break;
+            case 3,6,9: col = 2; break;
+        }
+        // play round only if game is not over and space still available
+        if(gameBoard.getIsGameOver() == false && gameBoard.getSpaces()[row][col] == '#') {
+            // sets chosen space with player's character ('O' or 'X')
+            gameBoard.setSpace(row, col, player.getHeadsOrTails());
+        } else {
+            // TODO: change so that this still gives that player opportunity to play
+            System.out.println("space not available");
+        }
+
     }
 
     /** checks if one of the players has won the game
@@ -52,7 +49,6 @@ public class Controller {
      * 3 if game ends with draw
      * 4 if game continues */
     public int checkGameOver() {
-
 
         char[][] spaces = gameBoard.getSpaces();
         char p1 = player1.getHeadsOrTails();
