@@ -12,31 +12,32 @@ public class Controller {
         player1.setName(player1Name);
         player1.setHeadsOrTails('O');
         player2.setName(player2Name);
-        player1.setHeadsOrTails('X');
+        player2.setHeadsOrTails('X');
 
     }
 
     /** performs one turn of tictactoe */
     public void playTurn(Player player, int chosenSpace) {
 
+        int row = -1, col = -1;
         // play round only if game is not over
         if(gameBoard.getIsGameOver() == false) {
             // TODO: test whether this works
             // TODO: game exits with draw on first round
             // TODO: fix smelly code
-            int row = (chosenSpace / 3) - 1;
-            int col = (chosenSpace % 3) - 1;
-
-            // ---------- TEST NOTES -----------
-            /**example: 1
-                    row = 1/3 -1 = 0 right
-                    col = 1%3 -1 =
-                    problem with example: 3
-                    row = 2/3 -1 = 0 right*/
-
+            switch (chosenSpace){
+                case 1,2,3: row = 0;
+                case 4,5,6: row = 1;
+                case 7,8,9: row = 2;
+            }
+            switch (chosenSpace){
+                case 1,4,7: col = 0;
+                case 2,5,8: col = 1;
+                case 3,6,9: col = 2;
+            }
 
             // set space only if still available
-            if (gameBoard.getSpaces()[row][col] != '#'){
+            if (gameBoard.getSpaces()[row][col] == '#'){
                 // sets chosen space with player's character ('O' or 'X')
                 gameBoard.setSpace(row, col, player.getHeadsOrTails());
             }
