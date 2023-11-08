@@ -25,22 +25,24 @@ public class Menu {
         int chosenSpace;
         int gameStatus;
 
+        // TODO: player 2 can still play one turn even though they lost
         do {
-            gameStatus = controller.checkGameOver();
             controller.visualizeGameBoard();
             chosenSpace = InputClass.readInt(controller.player1.getName() +
                     ", choose a space by entering its number: ");
             controller.playTurn(controller.player1, chosenSpace);
+            gameStatus = controller.checkGameOver();
             controller.visualizeGameBoard();
             chosenSpace = InputClass.readInt(controller.player2.getName() +
                     ", choose a space by entering its number: ");
             controller.playTurn(controller.player2, chosenSpace);
+            gameStatus = controller.checkGameOver();
         } while (gameStatus == 4);
 
         switch (gameStatus) {
-            case 1: System.out.println(controller.player1.getName() + "wins");
-            case 2: System.out.println(controller.player2.getName() + "wins");
-            case 3: System.out.println("nobody wins");
+            case 1: System.out.println(controller.player1.getName() + "wins"); break;
+            case 2: System.out.println(controller.player2.getName() + "wins"); break;
+            case 3: System.out.println("nobody wins"); break;
         }
 
     }
